@@ -34,9 +34,20 @@ public class Program
 
         builder.Services.AddAuthorization();
 
+        builder.Services.AddCors(options => {
+            options.AddDefaultPolicy(policy => {
+                policy
+                    .WithOrigins(builder.Configuration.GetSection("AllowedOrigins").Get<string[]>()!)
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+            });
+        });
+
         var app = builder.Build();
 
         app.UseMiddleware<Middleware.ExceptionHandlerMiddleware>();
+
+        app.UseCors();
 
         app.UseRouting();
         app.UseAuthentication();
