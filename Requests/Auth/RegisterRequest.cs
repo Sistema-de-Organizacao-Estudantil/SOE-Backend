@@ -1,0 +1,17 @@
+namespace SistemaOrganizacaoEstudantil.Requests.Auth;
+
+using System.ComponentModel.DataAnnotations;
+
+public class RegisterRequest
+{
+    [Required]
+    public required String Name { get; set; }
+
+    [Required]
+    [EmailAddress]
+    public required String Email { get; set; }
+
+    [Required]
+    [MinLength(6)]
+    public required String Password { get; set; }
+}
