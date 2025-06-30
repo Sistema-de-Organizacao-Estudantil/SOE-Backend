@@ -1,10 +1,10 @@
 namespace SistemaOrganizacaoEstudantil.Business.Auth.Services;
 
-using Models;
 using Entities;
 using Exceptions;
 using Infrastructure;
-using Requests.Auth;
+using Contracts.Responses;
+using Contracts.Requests.Auth;
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -49,7 +49,7 @@ public class AuthService
         return handler.WriteToken(token);
     }
 
-    public async Task<UserModel> Register(RegisterRequest request)
+    public async Task<UserResponse> Register(RegisterRequest request)
     {
         var user = new User {
             Name = request.Name,
@@ -63,7 +63,7 @@ public class AuthService
         await context.Users.AddAsync(user);
         await context.SaveChangesAsync();
 
-        return UserModel.FromUser(user);
+        return UserResponse.FromUser(user);
     }
 
     private DataContext context;

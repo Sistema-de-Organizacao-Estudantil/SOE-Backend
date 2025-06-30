@@ -1,7 +1,7 @@
 namespace SistemaOrganizacaoEstudantil.Controllers;
 
 using Business.Auth.Services;
-using Requests.Auth;
+using Contracts.Requests.Auth;
 
 using Microsoft.AspNetCore.Mvc;
 

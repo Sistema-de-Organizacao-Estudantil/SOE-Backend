@@ -1,4 +1,4 @@
-namespace SistemaOrganizacaoEstudantil.Requests.Auth;
+namespace SistemaOrganizacaoEstudantil.Contracts.Requests.Auth;
 
 using System.ComponentModel.DataAnnotations;
 

@@ -1,14 +1,14 @@
-namespace SistemaOrganizacaoEstudantil.Models;
+namespace SistemaOrganizacaoEstudantil.Contracts.Responses;
 
 using Entities;
 
-public class UserModel
+public class UserResponse
 {
     public required int Id { get; set; }
     public required String Name { get; set; }
     public required String Email { get; set; }
 
-    public static UserModel FromUser(User user)
+    public static UserResponse FromUser(User user)
     {
         return new () {
             Id = user.Id,

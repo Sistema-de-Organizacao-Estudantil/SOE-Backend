@@ -2,7 +2,7 @@ namespace SistemaOrganizacaoEstudantil.Business.User.Services;
 
 using Exceptions;
 using Infrastructure;
-using Models;
+using Contracts.Responses;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -13,11 +13,11 @@ public class UserService
         this.context = context;
     }
 
-    public async Task<UserModel> GetById(int id)
+    public async Task<UserResponse> GetById(int id)
     {
         var user = await context.Users
             .Where(user => user.Id == id)
-            .Select(user => UserModel.FromUser(user))
+            .Select(user => UserResponse.FromUser(user))
             .FirstAsync();
 
         if (user == null)
@@ -26,11 +26,11 @@ public class UserService
         return user;
     }
 
-    public async Task<UserModel> GetByEmail(string email)
+    public async Task<UserResponse> GetByEmail(string email)
     {
         var user = await context.Users
             .Where(user => user.Email == email)
-            .Select(user => UserModel.FromUser(user))
+            .Select(user => UserResponse.FromUser(user))
             .FirstAsync();
 
         if (user == null)
@@ -39,10 +39,10 @@ public class UserService
         return user;
     }
 
-    public async Task<IEnumerable<UserModel>> GetAll()
+    public async Task<IEnumerable<UserResponse>> GetAll()
     {
         return await context.Users
-            .Select(user => UserModel.FromUser(user))
+            .Select(user => UserResponse.FromUser(user))
             .ToListAsync();
     }
 
