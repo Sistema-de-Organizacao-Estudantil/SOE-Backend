@@ -8,7 +8,6 @@ public class RegisterRequest
     public required String Name { get; set; }
 
     [Required]
-    [EmailAddress]
     public required String Email { get; set; }
 
     [Required]

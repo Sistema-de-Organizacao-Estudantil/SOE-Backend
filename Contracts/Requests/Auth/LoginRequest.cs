@@ -5,7 +5,6 @@ using System.ComponentModel.DataAnnotations;
 public class LoginRequest
 {
     [Required]
-    [EmailAddress]
     public required String Email { get; set; }
 
     [Required]
